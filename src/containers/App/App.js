@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoList from '../../components/TodoList/TodoList';
-import store from '../../store';
 import { addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions';
 import ControlPanel from '../../components/ControlPanel/ControPanel';
+import { connect } from 'react-redux';
 
 let ID_COUNTER = 4;
 
@@ -32,7 +32,8 @@ class App extends Component {
       checked: false
     }
 
-    store.dispatch(addTodo(newTodo));
+    // store.dispatch(addTodo(newTodo));
+    this.props.addTodo(newTodo);
 
     this.setState({
       inputValue: ''
@@ -41,7 +42,8 @@ class App extends Component {
   }
 
   handleRemoveClick = () => {
-    store.dispatch(removeTodos());
+    // store.dispatch(removeTodos());
+    this.props.removeTodos();
 
     this.setState({
       allSelected: false
@@ -51,10 +53,12 @@ class App extends Component {
   handleSelectClick = () => {
     // unselect if all selected
     if(this.state.allSelected){
-      store.dispatch(unselectAllTodos());
+      // store.dispatch(unselectAllTodos());
+      this.props.unselectAllTodos();
     }
     else{
-      store.dispatch(selectAllTodos());
+      // store.dispatch(selectAllTodos());
+      this.props.selectAllTodos();
     }
 
     this.setState({ 
@@ -63,8 +67,6 @@ class App extends Component {
   }
 
   render() {
-    const state = store.getState();
-
     return (
       <div className='App'>
         <ControlPanel 
@@ -73,10 +75,21 @@ class App extends Component {
           handleAddClick={this.handleAddClick} 
           handleRemoveClick={this.handleRemoveClick}
           handleSelectClick={this.handleSelectClick}/>
-        <TodoList todoList={state.todoList} />
+        <TodoList todoList={this.props.todoList} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({ todoList: state.todoList });
+
+const mapDispatchToProps = dispatch => (
+  {
+    addTodo: (todo) => {dispatch(addTodo(todo))},
+    removeTodos: () => {dispatch(removeTodos())},
+    selectAllTodos: () => {dispatch(selectAllTodos())},
+    unselectAllTodos: () => {dispatch(unselectAllTodos())}
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

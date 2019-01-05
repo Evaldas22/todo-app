@@ -1,15 +1,16 @@
 import React from 'react';
 import './TodoItem.css';
-import store from '../../store';
 import { toggleCheckbox } from '../../actions';
+import { connect } from 'react-redux';
 
-const TodoItem = ({ todo }) => {
+const TodoItem = (props) => {
+
+    const {text, checked, todoId} = props.todo;
 
     const handleChange = () => {
-        store.dispatch(toggleCheckbox(todo.todoId));
+        // store.dispatch(toggleCheckbox(todo.todoId));
+        props.toggleCheckbox(todoId);
     }
-
-    const {text, checked} = todo;
 
     return (
         <div className='todoItem'>
@@ -19,4 +20,10 @@ const TodoItem = ({ todo }) => {
     ) 
 } 
 
-export default TodoItem;
+const mapDispatchToProps = dispatch => (
+    { 
+        toggleCheckbox: todoId => { dispatch(toggleCheckbox(todoId)) }
+    }
+);
+
+export default connect(null, mapDispatchToProps)(TodoItem);
