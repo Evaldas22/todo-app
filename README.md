@@ -1,4 +1,4 @@
-Application for mananging TODOs. Created to practice full stack development.
+Application for managing TODOs. Created to practice full stack development.
 
 ## Available Scripts
 
