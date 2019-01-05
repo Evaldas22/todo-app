@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended"
+    ]
+}

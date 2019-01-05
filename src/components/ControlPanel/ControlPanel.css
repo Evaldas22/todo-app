@@ -1,0 +1,23 @@
+.controlPanel {
+    width: 50%;
+}
+
+.buttonGroup {
+    display: flex;
+}
+
+.add-btn {
+    flex:1;
+}
+
+.remove-btn {
+    flex:1;
+}
+
+.select-btn {
+    flex:1;
+}
+
+.inputGroup {
+    margin: 1rem 0 ;
+}
