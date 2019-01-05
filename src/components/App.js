@@ -12,7 +12,7 @@ const todoList = [
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <TodoList todoList={todoList} />
       </div>
     );

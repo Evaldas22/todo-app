@@ -4,7 +4,7 @@ import './style/TodoItem.css';
 const TodoItem = (props) => {
     return (
         <div>
-            <p>{props.item}</p>
+            <p className='todoItem'>{props.item}</p>
         </div>
     )
 } 
