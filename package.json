@@ -1,0 +1,28 @@
+{
+  "name": "todo_application_server",
+  "version": "1.0.0",
+  "description": "Application for managing todos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evaldas22/todo-app.git"
+  },
+  "author": "Evaldas Suraucius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evaldas22/todo-app/issues"
+  },
+  "homepage": "https://github.com/Evaldas22/todo-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
