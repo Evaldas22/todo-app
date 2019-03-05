@@ -1,5 +1,7 @@
 const express = require('express');
+const async = require('async');
 const router = express.Router();
+
 
 const Todo = require('../../models/TODO');
 
@@ -20,25 +22,21 @@ router.post('/', (req, res) => {
 
     Todo.create(newTodos)
         .then(savedTodos => res.json({savedTodos}))
-        .catch(err => res.json(500, err));
+        .catch(err => res.status(500).json(err));
 });
 
 // @route   PUT api/todos
 // @desc    Create new todos
 // @access  Public
-router.put('/', (req, res) => {
-    const updatedTodos = [];
-
-    req.body.todos.map(todo => {
-        const newData = {
-            name: todo.name
-        }
-        Todo.updateOne({ _id: todo._id}, newData)
-            .then(updatedTodo => updatedTodos.push(updatedTodo))
-            .catch(err => res.json(404, err));
+router.put('/', async (req, res) => {
+    const todos = req.body.todos;
+    
+    async.eachSeries(todos, function iterator(todo, done){
+        Todo.updateOne({ _id: todo._id}, { $set : { name: todo.name }}, done);
+    }, function done(err) {
+        if(err) res.status(404).json(err)
+        else res.json({success: true})
     });
-
-    res.json({success: true})
 });
 
 // @route   DELETE api/todos/
@@ -46,8 +44,8 @@ router.put('/', (req, res) => {
 // @access  Public
 router.delete('/', (req, res) => {
     Todo.deleteMany({_id: { $in: req.body.todosIds}})
-        .then(deletedTodos => res.json({deletedTodos}))
-        .catch(err => res.json(404, err));
+        .then(() => res.json({success: true}))
+        .catch(err => res.status(404).json(err));
 });
 
 // @route   DELETE api/todos/all
@@ -55,8 +53,8 @@ router.delete('/', (req, res) => {
 // @access  Public
 router.delete('/all', (req, res) => {
     Todo.deleteMany()
-        .then(todos => res.json({todos: todos}))
-        .catch(err => res.json(500, err));
+        .then(() => res.json({success: true}))
+        .catch(err => res.status(500).json(err));
 });
 
 module.exports = router;
