@@ -1,18 +1,33 @@
-Application for managing TODOs. Created to practice full stack development.
+Application for managing TODOs. Created to practice full stack development, using MERN stack. 
 
-## Available Scripts
+## Installing dependencies
 
-In the client directory, you can run:
-
+To install back-end dependencies run:
 ### `npm install`
 
-Installs node modules for the first time, before running next command:
+To install front-end dependencies run:
+### `npm client-install`
 
-### `npm start`
+## Running application
 
-Runs the app in the development mode.<br>
+To run both front-end and back-end run:
+## `npm run dev`
+
+To run back-end separately run:
+## `npm start`
+
+To run back-end in development mode run:
+## `npm run server`
+
+To run client separately - navigate to client/ directory and run:
+### `npm run client`
+
+## Information about application
+
+Application runs localy on port: 3000.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Other scripts 
 
 ### `npm run build`
 
