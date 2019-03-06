@@ -4,11 +4,9 @@ import { toggleCheckbox } from '../../actions';
 import { connect } from 'react-redux';
 
 const TodoItem = (props) => {
-
-    const { _id, name, checked, date } = props.todo;
+    const { _id, name, checked } = props.todo;
 
     const handleChange = (todoId) => {
-        // store.dispatch(toggleCheckbox(todo.todoId));
         props.toggleCheckbox(todoId);
     }    
 
