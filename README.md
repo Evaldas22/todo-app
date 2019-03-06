@@ -24,7 +24,8 @@ Runs front-end separately
 
 ## Information about application
 
-Application runs localy on port: 3000.<br>
+Applications front-end runs localy on port: 3000<br>
+Applications back-end runs localy on port: 5000<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Other scripts 
