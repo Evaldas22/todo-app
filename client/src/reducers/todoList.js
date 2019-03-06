@@ -4,6 +4,7 @@ const todoList = (state = [], action) => {
     switch (action.type){
         case types.GET_TODOS:
             return action.payload.map(todo => ({
+                id: todo._id,
                 name: todo.name,
                 date: todo.date,
                 checked: false

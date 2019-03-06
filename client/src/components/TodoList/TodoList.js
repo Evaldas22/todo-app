@@ -6,7 +6,7 @@ const TodoList = ({ todoList }) => {
 
     return (
         <div className='todoList'>
-            {todoList.map((todo, i) => <TodoItem key={i} id={todo._id} todoName={todo.name} checked={todo.checked} />)}
+            {todoList.map((todo, i) => <TodoItem key={i} todo={todo}/>)}
         </div>
     )
 }

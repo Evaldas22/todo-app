@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const TodoItem = (props) => {
 
-    const { id, todoName, checked } = props;
+    const { _id, name, checked, date } = props.todo;
 
     const handleChange = (todoId) => {
         // store.dispatch(toggleCheckbox(todo.todoId));
@@ -14,8 +14,8 @@ const TodoItem = (props) => {
 
     return (
         <div className='todoItem'>
-            <input type="checkbox" checked={checked} onChange={() => handleChange(id)}/>
-            <p className='todoItem-text' >{todoName}</p>
+            <input type="checkbox" checked={checked} onChange={() => handleChange(_id)}/>
+            <p className='todoItem-text' >{name}</p>
         </div>
     ) 
 } 
