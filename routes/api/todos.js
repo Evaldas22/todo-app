@@ -15,12 +15,13 @@ router.get('/', (req, res) => {
 });
 
 // @route   POST api/todos
-// @desc    Create new todos
+// @desc    Create new todo
 // @access  Public
 router.post('/', (req, res) => {
-    const newTodos = req.body.todos.map(todo => (new Todo({ name: todo })));
-
-    Todo.create(newTodos)
+    const newTodo = new Todo({
+        name: req.body.todo
+    });
+    Todo.create(newTodo)
         .then(savedTodos => res.json({savedTodos}))
         .catch(err => res.status(500).json(err));
 });
@@ -32,7 +33,7 @@ router.put('/', async (req, res) => {
     const todos = req.body.todos;
     
     async.eachSeries(todos, function iterator(todo, done){
-        Todo.updateOne({ _id: todo._id}, { $set : { name: todo.name }}, done);
+        Todo.updateOne({ _id: todo._id}, { $set : { name: todo.name, checked: todo.checked }}, done);
     }, function done(err) {
         if(err) res.status(404).json(err)
         else res.json({success: true})

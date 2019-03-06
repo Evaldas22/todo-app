@@ -1,4 +1,15 @@
 import * as types from '../types';
+import axios from "axios";
+
+export const getTodos = () => dispatch => {
+    axios.get('/api/todos')
+        .then(res => {
+            dispatch({
+                type: types.GET_TODOS,
+                payload: res.data
+            })
+        });
+}
 
 export const addTodo = (todo) => ({
     type: types.ADD_TODO,

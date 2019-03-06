@@ -2,11 +2,11 @@ import React from 'react';
 import './TodoList.css';
 import TodoItem from '../../containers/TodoItem/TodoItem';
 
-const TodoList = ({ todoList, toggleCheckedStatus }) => {
-    
+const TodoList = ({ todoList }) => {   
+
     return (
         <div className='todoList'>
-            {todoList.map((todo, i) => <TodoItem key={todo.todoId} todo={todo} />)}
+            {todoList.map((todo, i) => <TodoItem key={i} id={todo._id} todoName={todo.name} checked={todo.checked} />)}
         </div>
     )
 }

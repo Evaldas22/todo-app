@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoList from '../../components/TodoList/TodoList';
-import { addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions';
+import { getTodos, addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions';
 import ControlPanel from '../../components/ControlPanel/ControPanel';
 import { connect } from 'react-redux';
 
@@ -16,6 +16,10 @@ class App extends Component {
       inputValue: '',
       allSelected: false
     }
+  }
+
+  componentDidMount = () => {
+    this.props.getTodos();
   }
 
   handleChange = (e) => {
@@ -66,7 +70,7 @@ class App extends Component {
     });
   }
 
-  render() {
+  render() {    
     return (
       <div className='App'>
         <ControlPanel 
@@ -85,10 +89,11 @@ const mapStateToProps = state => ({ todoList: state.todoList });
 
 const mapDispatchToProps = dispatch => (
   {
-    addTodo: (todo) => {dispatch(addTodo(todo))},
-    removeTodos: () => {dispatch(removeTodos())},
-    selectAllTodos: () => {dispatch(selectAllTodos())},
-    unselectAllTodos: () => {dispatch(unselectAllTodos())}
+    getTodos: () => dispatch(getTodos()),
+    addTodo: (todo) => dispatch(addTodo(todo)),
+    removeTodos: () => dispatch(removeTodos()),
+    selectAllTodos: () => dispatch(selectAllTodos()),
+    unselectAllTodos: () => dispatch(unselectAllTodos())
   }
 );
 

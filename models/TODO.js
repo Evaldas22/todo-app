@@ -6,6 +6,11 @@ const TODOSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    checked: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     date: {
         type: Date,
         default: Date.now
