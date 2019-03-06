@@ -3,7 +3,11 @@ import * as types from '../types';
 const todoList = (state = [], action) => {
     switch (action.type){
         case types.GET_TODOS:
-            return action.payload;
+            return action.payload.map(todo => ({
+                name: todo.name,
+                date: todo.date,
+                checked: false
+            }));
 
         case types.ADD_TODO:
             return [...state, action.payload];

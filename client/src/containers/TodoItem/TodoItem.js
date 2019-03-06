@@ -3,28 +3,25 @@ import './TodoItem.css';
 import { toggleCheckbox } from '../../actions';
 import { connect } from 'react-redux';
 
-const TodoItem = ({ id, todoName, checked}) => {
+const TodoItem = (props) => {
 
-    const handleChange = () => {
+    const { id, todoName, checked } = props;
+
+    const handleChange = (todoId) => {
         // store.dispatch(toggleCheckbox(todo.todoId));
-        // props.toggleCheckbox(todoId);
-    }
-
-    console.log(id, todoName, checked);
-    
+        props.toggleCheckbox(todoId);
+    }    
 
     return (
         <div className='todoItem'>
-            <input type="checkbox" checked={checked} onChange={handleChange}/>
+            <input type="checkbox" checked={checked} onChange={() => handleChange(id)}/>
             <p className='todoItem-text' >{todoName}</p>
         </div>
     ) 
 } 
 
 const mapDispatchToProps = dispatch => (
-    { 
-        toggleCheckbox: todoId => { dispatch(toggleCheckbox(todoId)) }
-    }
+    { toggleCheckbox: todoId => dispatch(toggleCheckbox(todoId))}
 );
 
 export default connect(null, mapDispatchToProps)(TodoItem);

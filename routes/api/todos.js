@@ -33,7 +33,7 @@ router.put('/', async (req, res) => {
     const todos = req.body.todos;
     
     async.eachSeries(todos, function iterator(todo, done){
-        Todo.updateOne({ _id: todo._id}, { $set : { name: todo.name, checked: todo.checked }}, done);
+        Todo.updateOne({ _id: todo._id}, { $set : { name: todo.name }}, done);
     }, function done(err) {
         if(err) res.status(404).json(err)
         else res.json({success: true})
