@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
         name: req.body.todo
     });
     Todo.create(newTodo)
-        .then(savedTodos => res.json({savedTodos}))
+        .then(savedTodo => res.json([savedTodo]))
         .catch(err => res.status(500).json(err));
 });
 

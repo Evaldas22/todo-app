@@ -11,13 +11,18 @@ const todoList = (state = [], action) => {
             }));
 
         case types.ADD_TODO:
-            return [...state, action.payload];
+            const addedTodo = action.payload[0];
+            const formattedTodo = {
+                id: addedTodo._id,
+                name: addedTodo.name,
+                date: addedTodo.date,
+                checked: false
+            }
+            return [formattedTodo, ...state];
 
         case types.REMOVE_TODOS:
-            const remainingTodos = state.filter( todo => {
-                return !todo.checked;
-            });
-            return remainingTodos;
+            const newState = state.filter(todo => !action.payload.includes(todo.id))
+            return newState;
 
         case types.SELECT_ALL_TODOS:
             return state.map(todo => ({
@@ -33,7 +38,7 @@ const todoList = (state = [], action) => {
 
         case types.TOGGLE_CHECKBOX:
             return state.map(todo => {
-                if(todo.todoId === action.payload){
+                if(todo.id === action.payload){
                     return {
                         ...todo,
                         checked: !todo.checked

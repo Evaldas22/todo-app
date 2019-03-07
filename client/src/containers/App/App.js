@@ -5,8 +5,6 @@ import { getTodos, addTodo, removeTodos, selectAllTodos, unselectAllTodos } from
 import ControlPanel from '../../components/ControlPanel/ControPanel';
 import { connect } from 'react-redux';
 
-let ID_COUNTER = 4;
-
 class App extends Component {
 
   constructor(props){
@@ -29,25 +27,15 @@ class App extends Component {
   }
 
   handleAddClick = () => {
-
-    const newTodo = {
-      todoId: ID_COUNTER++,
-      text: this.state.inputValue,
-      checked: false
-    }
-
-    // store.dispatch(addTodo(newTodo));
-    this.props.addTodo(newTodo);
-
-    this.setState({
-      inputValue: ''
-    });
-
+    this.props.addTodo(this.state.inputValue)
   }
 
   handleRemoveClick = () => {
-    // store.dispatch(removeTodos());
-    this.props.removeTodos();
+    const todosToBeDeleted = this.props.todoList.filter(todo => todo.checked)
+    const todosIds = {
+      "todosIds" : todosToBeDeleted.map(todo => todo.id)
+    }
+    this.props.removeTodos(todosIds);
 
     this.setState({
       allSelected: false
@@ -91,7 +79,7 @@ const mapDispatchToProps = dispatch => (
   {
     getTodos: () => dispatch(getTodos()),
     addTodo: (todo) => dispatch(addTodo(todo)),
-    removeTodos: () => dispatch(removeTodos()),
+    removeTodos: (todosIds) => dispatch(removeTodos(todosIds)),
     selectAllTodos: () => dispatch(selectAllTodos()),
     unselectAllTodos: () => dispatch(unselectAllTodos())
   }
