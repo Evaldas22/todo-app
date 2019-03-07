@@ -23,12 +23,12 @@ export const addTodo = (todoName) => dispatch => {
     });
 }
 
-export const removeTodos = (payload) => dispatch => {    
-    axios.delete('/api/todos', { data: payload}).then(res => {
+export const removeTodos = (todosIdsObj) => dispatch => {    
+    axios.delete('/api/todos', { data: todosIdsObj}).then(res => {
         if(res.data.success){
             dispatch({
                 type: types.REMOVE_TODOS,
-                payload: payload.todosIds
+                payload: todosIdsObj.todosIds
             })
         }
     })
