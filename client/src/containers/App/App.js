@@ -4,6 +4,7 @@ import TodoList from '../../components/TodoList/TodoList';
 import { getTodos, addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions';
 import ControlPanel from '../../components/ControlPanel/ControPanel';
 import { connect } from 'react-redux';
+import Toolbar from '../../common/Toolbar/Toolbar';
 
 class App extends Component {
 
@@ -43,13 +44,10 @@ class App extends Component {
   }
 
   handleSelectClick = () => {
-    // unselect if all selected
     if(this.state.allSelected){
-      // store.dispatch(unselectAllTodos());
       this.props.unselectAllTodos();
     }
     else{
-      // store.dispatch(selectAllTodos());
       this.props.selectAllTodos();
     }
 
@@ -61,6 +59,7 @@ class App extends Component {
   render() {    
     return (
       <div className='App'>
+        <Toolbar />
         <ControlPanel 
           state={this.state} 
           handleChange={this.handleChange} 
