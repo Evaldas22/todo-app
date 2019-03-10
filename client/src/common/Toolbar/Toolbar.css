@@ -1,0 +1,47 @@
+.toolbar {
+    width: 100%;
+    background-color: rgb(58, 0, 85);
+    height: 56px;
+}
+
+.toolbar-nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.toolbar-name a{
+    color: white;
+    text-decoration: none !important;
+    font-size: 1.5rem;
+}
+
+.toolbar-name a:hover {
+    color: orange;
+}
+
+.toolbar-nav-items a {
+    color: white;
+    text-decoration: none !important;
+}
+
+.toolbar-nav-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.toolbar-nav-items li {
+    padding: 0 0.8rem;
+}
+
+.toolbar-nav-items a:hover, 
+.toolbar-nav-items a:active {
+    color: orange;
+}
+
+.spacer {
+    flex: 1;
+}
+
