@@ -34,6 +34,8 @@
 
 .toolbar-nav-items li {
     padding: 0 0.8rem;
+    color: white;
+    text-decoration: none !important;
 }
 
 .toolbar-nav-items a:hover, 
