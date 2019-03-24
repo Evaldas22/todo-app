@@ -1,6 +1,6 @@
 import React from 'react';
 import './TodoItem.css';
-import { toggleCheckbox } from '../../actions';
+import { toggleCheckbox } from '../../actions/todosActions';
 import { connect } from 'react-redux';
 
 const TodoItem = (props) => {

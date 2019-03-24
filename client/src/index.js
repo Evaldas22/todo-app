@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { SignIn } from './components/SignIn/SignIn';
-import { SignUp } from './components/SignUp/SignUp';
+import SignUp from './containers/SignUpPage/SignUp';
 
 ReactDOM.render((
     <Provider store={store}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoList from '../../components/TodoList/TodoList';
-import { getTodos, addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions';
+import { getTodos, addTodo, removeTodos, selectAllTodos, unselectAllTodos } from '../../actions/todosActions';
 import ControlPanel from '../../components/ControlPanel/ControPanel';
 import { connect } from 'react-redux';
 import Toolbar from '../../common/Toolbar/Toolbar';
